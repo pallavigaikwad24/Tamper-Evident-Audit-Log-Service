@@ -1,0 +1,14 @@
+up:
+	docker compose up --build
+
+down:
+	docker compose down
+
+test:
+	docker compose run --rm api pytest
+
+psql:
+	docker compose exec postgres psql -U audit -d auditlog
+
+logs:
+	docker compose logs -f api worker
