@@ -1,0 +1,20 @@
+# ---- Web framework ----
+fastapi            # Main web framework: REST endpoints (POST /events, GET /verify), SSE streaming, automatic /docs
+uvicorn[standard]  # ASGI server that runs FastAPI; [standard] adds fast extras (uvloop, httptools, websockets)
+
+# ---- Database ----
+sqlalchemy[asyncio]  # ORM and query toolkit; the asyncio extra enables async sessions
+asyncpg              # Async PostgreSQL driver that SQLAlchemy uses under the hood
+alembic              # Database migrations: version-controlled changes to your tables 
+
+# ---- Redis ----
+redis              # Redis client (async supported): status streams, pub/sub, caching
+
+# ---- Configuration ----
+pydantic-settings  # Loads and validates env vars (DATABASE_URL, HMAC_KEY) into the Settings class
+
+# ---- Testing ----
+pytest             # Test runner
+pytest-asyncio     # Lets pytest run async tests (your endpoints and DB code are async)
+pytest-env         # Sets environment variables for tests via pytest.ini
+httpx              # HTTP client; used with ASGITransport to call your FastAPI app inside tests
